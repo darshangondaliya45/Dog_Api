@@ -1,0 +1,54 @@
+<img src="" width="45%" id="image">
+
+<div id="main">
+    <select id="breedselect">
+        <option value="chow">
+            Chow
+        </option>
+        <option value="chow">
+           Dingo
+        </option>
+        <option value="chow">
+            African
+        </option> 
+        <option value="chow">
+            Boxer
+        </option>
+        <option value="chow">
+           Borzoi
+        </option>
+        <option value="chow">
+           Cavapoo
+        </option>
+        <option value="chow">
+           Husky
+        </option>
+    </select>
+
+
+
+</div>
+<button onclick="getDog()">New Dog</button>
+
+<script>
+    let name =document.getElementById('breedselect');
+    
+    console.log(name);
+    const getDog = async ()=>{
+
+        try{
+            let res = await fetch(`https://dog.ceo/api/breed/${breedselect}/images/random`);
+
+            let final = await res.json();
+
+            let img = document.getElementById('image');
+
+            img.src = final.message
+        }catch(err){
+            console.log(err)
+        }
+
+    }
+    getDog();
+
+</script>
